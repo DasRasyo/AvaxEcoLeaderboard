@@ -1,14 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f7f6;
-    color: #333;
+    background-color: #000000; /* Black background */
+    color: #ffffff; /* White text for contrast */
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
 header {
-    background-color: #e84142; /* Avalanche kırmızısı */
+    background-color: #e84142; /* Avalanche Red */
     color: white;
     padding: 20px 0;
     margin-bottom: 20px;
@@ -24,39 +24,67 @@ main {
 }
 
 #leaderboard {
-    width: 80%; /* Tablo genişliği */
-    margin: 0 auto; /* Ortalamak için */
-    border-collapse: collapse; /* Kenarlıkları birleştir */
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Hafif gölge */
-    background-color: white;
+    width: 80%;
+    max-width: 900px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    box-shadow: 0 4px 15px rgba(255,255,255,0.2); /* Light shadow for black background */
+    background-color: #222222; /* Darker background for the table itself */
+    color: white;
 }
 
 #leaderboard th, #leaderboard td {
-    border: 1px solid #ddd;
+    border: 1px solid #444; /* Lighter border color */
     padding: 12px;
     text-align: left;
 }
 
 #leaderboard th {
-    background-color: #3f51b5; /* Koyu mavi başlık */
+    background-color: #3f51b5; /* Dark blue header */
     color: white;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
-/* İlk 3 sıra için özel stil */
-#leaderboard-body tr:nth-child(1) { background-color: #ffeb3b; font-weight: bold; } /* Altın */
-#leaderboard-body tr:nth-child(2) { background-color: #bdbdbd; font-weight: bold; } /* Gümüş */
-#leaderboard-body tr:nth-child(3) { background-color: #ffab40; font-weight: bold; } /* Bronz */
+/* Special styles for the top 3 ranks */
+#leaderboard-body tr:nth-child(1) { background-color: #ffc107; color: black; font-weight: bold; } /* Gold */
+#leaderboard-body tr:nth-child(2) { background-color: #9e9e9e; color: black; font-weight: bold; } /* Silver */
+#leaderboard-body tr:nth-child(3) { background-color: #ff5722; color: black; font-weight: bold; } /* Bronze */
 
 #leaderboard-body tr:hover {
-    background-color: #f0f0f0;
+    background-color: #333333; /* Darker hover effect */
+}
+
+.update-info {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #1a1a1a;
+    font-size: 0.9em;
+    color: #ccc;
 }
 
 footer {
     margin-top: 40px;
-    padding: 10px 0;
-    background-color: #ddd;
+    padding: 15px 0;
+    background-color: #111111; /* Very dark gray footer */
     font-size: 0.8em;
-    color: #666;
+    color: #999;
+}
+
+footer a {
+    color: #e84142; /* Link color matching the header (Avalanche Red) */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive Table Design */
+@media screen and (max-width: 600px) {
+    #leaderboard {
+        width: 100%;
+    }
 }
