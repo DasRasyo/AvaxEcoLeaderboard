@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Avax Eco Points Leaderboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Avax Eco Points Leaderboard</h1>
+    </header>
+
+    <main>
+        <table id="leaderboard">
+            <thead>
+                <tr>
+                    <th>Sıra</th>
+                    <th>Twitter Kullanıcı Adı</th>
+                    <th>Puan</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboard-body">
+                </tbody>
+        </table>
+    </main>
+
+    <footer>
+        <p>Veriler manuel olarak güncellenir. Son Güncelleme: [Tarih]</p>
+    </footer>
+
+    <script>
+        // *** DÜZENLEME YAPACAĞINIZ YER BURASI ***
+        // Verilerinizi buraya girin. Puanı yüksek olan en üste çıkacak.
+        const userScores = [
+            { twitter: '@AhmetKullanici', score: 1500 },
+            { twitter: '@ZeynepAvaxFan', score: 2500 },
+            { twitter: '@MehmetNode', score: 800 },
+            { twitter: '@EcoPointsPro', score: 3200 },
+            // Daha fazla kullanıcı eklemek için virgülle ayırarak devam edin:
+            // { twitter: '@YeniKullanici', score: 1000 },
+        ];
+
+        // Verileri puana göre büyükten küçüğe sıralayalım
+        userScores.sort((a, b) => b.score - a.score);
+
+        const leaderboardBody = document.getElementById('leaderboard-body');
+
+        userScores.forEach((user, index) => {
+            const row = leaderboardBody.insertRow();
+            // Sıra numarası (1'den başlıyor)
+            row.insertCell().textContent = index + 1; 
+            // Twitter Kullanıcı Adı
+            row.insertCell().textContent = user.twitter; 
+            // Puan
+            row.insertCell().textContent = user.score.toLocaleString(); // Puanı okunması kolay hale getirir
+        });
+
+        // Footer'daki son güncelleme tarihini otomatik dolduralım
+        document.querySelector('footer p').innerHTML = 
+            'Veriler manuel olarak güncellenir. Son Güncelleme: ' + 
+            new Date().toLocaleDateString('tr-TR');
+            
+    </script>
+
+</body>
+</html>
