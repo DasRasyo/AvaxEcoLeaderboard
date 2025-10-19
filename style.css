@@ -23,6 +23,22 @@ main {
     padding: 20px;
 }
 
+/* YENİ STİL: Kurucu bilgisinin üstte daha görünür olması için */
+.credit-top {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: #1a1a1a;
+    border: 1px solid #3f51b5; /* Hafif bir çerçeve ekleyelim */
+    border-radius: 5px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: #fff;
+    width: 80%;
+    max-width: 900px;
+    margin: 10px auto; /* Ortalamak için */
+}
+
+
 #leaderboard {
     width: 80%;
     max-width: 900px;
@@ -62,6 +78,9 @@ main {
     background-color: #1a1a1a;
     font-size: 0.9em;
     color: #ccc;
+    width: 80%;
+    max-width: 900px;
+    margin: 20px auto 10px auto; /* Ortalamak için */
 }
 
 footer {
@@ -72,13 +91,13 @@ footer {
     color: #999;
 }
 
-footer a {
+footer a, .credit-top a { /* Hem footer hem de üstteki credit linki için geçerli */
     color: #e84142; /* Link color matching the header (Avalanche Red) */
     text-decoration: none;
     font-weight: bold;
 }
 
-footer a:hover {
+footer a:hover, .credit-top a:hover {
     text-decoration: underline;
 }
 
@@ -86,5 +105,8 @@ footer a:hover {
 @media screen and (max-width: 600px) {
     #leaderboard {
         width: 100%;
+    }
+    .update-info, .credit-top {
+        width: 95%; /* Mobil görünümde daha iyi sığması için */
     }
 }
