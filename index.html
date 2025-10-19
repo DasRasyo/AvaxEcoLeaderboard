@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,52 +16,64 @@
         <table id="leaderboard">
             <thead>
                 <tr>
-                    <th>Sıra</th>
-                    <th>Twitter Kullanıcı Adı</th>
-                    <th>Puan</th>
+                    <th>Rank</th>
+                    <th>Twitter Handle</th>
+                    <th>Score</th>
                 </tr>
             </thead>
             <tbody id="leaderboard-body">
                 </tbody>
         </table>
+
+        <p class="update-info">
+            Scores are updated once a day. This is an **unofficial** leaderboard and scores may not be completely accurate.
+        </p>
     </main>
 
     <footer>
-        <p>Veriler manuel olarak güncellenir. Son Güncelleme: [Tarih]</p>
+        <p id="footer-credit"></p>
     </footer>
 
     <script>
-        // *** DÜZENLEME YAPACAĞINIZ YER BURASI ***
-        // Verilerinizi buraya girin. Puanı yüksek olan en üste çıkacak.
+        // **********************************************
+        // *** DÜZENLEME YAPACAĞINIZ YER BURASI (VERİLER) ***
+        // **********************************************
+        // Enter your data here. Higher score will be ranked at the top.
         const userScores = [
-            { twitter: '@AhmetKullanici', score: 1500 },
-            { twitter: '@ZeynepAvaxFan', score: 2500 },
-            { twitter: '@MehmetNode', score: 800 },
             { twitter: '@EcoPointsPro', score: 3200 },
-            // Daha fazla kullanıcı eklemek için virgülle ayırarak devam edin:
-            // { twitter: '@YeniKullanici', score: 1000 },
+            { twitter: '@ZeynepAvaxFan', score: 2500 },
+            { twitter: '@AhmetKullanici', score: 1500 },
+            { twitter: '@YeniKullanici', score: 1000 },
+            { twitter: '@MehmetNode', score: 800 },
         ];
+        // **********************************************
 
-        // Verileri puana göre büyükten küçüğe sıralayalım
+
+        // Sort data from high to low score
         userScores.sort((a, b) => b.score - a.score);
 
         const leaderboardBody = document.getElementById('leaderboard-body');
 
         userScores.forEach((user, index) => {
             const row = leaderboardBody.insertRow();
-            // Sıra numarası (1'den başlıyor)
+            // Rank number (starts at 1)
             row.insertCell().textContent = index + 1; 
-            // Twitter Kullanıcı Adı
+            // Twitter Handle
             row.insertCell().textContent = user.twitter; 
-            // Puan
-            row.insertCell().textContent = user.score.toLocaleString(); // Puanı okunması kolay hale getirir
+            // Score
+            row.insertCell().textContent = user.score.toLocaleString(); // Format score for readability
         });
 
-        // Footer'daki son güncelleme tarihini otomatik dolduralım
-        document.querySelector('footer p').innerHTML = 
-            'Veriler manuel olarak güncellenir. Son Güncelleme: ' + 
-            new Date().toLocaleDateString('tr-TR');
-            
+        // Update the footer credit dynamically
+        const footerCredit = document.getElementById('footer-credit');
+        const twitterLink = 'https://x.com/Conquerorr_1';
+        const conquerorLink = `<a href="${twitterLink}" target="_blank">Conqueror</a>`;
+
+        // Last Updated date
+        const lastUpdatedDate = new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
+
+        footerCredit.innerHTML = `Built with ❤️ by ${conquerorLink}. Last Updated: ${lastUpdatedDate}`;
+        
     </script>
 
 </body>
